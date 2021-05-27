@@ -19,6 +19,7 @@
 <style>
     body {
         text-align: center;
+        background-color: #FDF5E6;
     }
     table {
         margin: auto;

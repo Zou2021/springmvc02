@@ -21,9 +21,6 @@ public class UserController {
     public ModelAndView getUser() throws Exception {
         System.out.println("你已经进入到controller了!!然后获取你的所有数据库的信息");
         List<User> list = userServiceImpl.selectUserSer();
-//        for(User user:list){
-//            System.out.println(user.getName());
-//        }
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("list", list);
         modelAndView.setViewName("userlist.jsp");
@@ -71,13 +68,14 @@ public class UserController {
     }
     //修改方法（更新数据）
     @RequestMapping("/editUser.do")
-    public ModelAndView edit(Integer id,String name,Integer age,String sex)throws Exception{
+    public String edit(Integer id,String name,Integer age,String sex)throws Exception{
         System.out.println("进入到数据库修改方法");
         User user = new User();
         user.setName(name);
         user.setAge(age);
         user.setSex(sex);
         userServiceImpl.updateUserSer(user,id);
-        return getUser();
+
+        return "redirect:getUser.do";
     }
 }

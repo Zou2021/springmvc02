@@ -15,7 +15,7 @@ import java.util.Properties;
  **/
 public class C3p0Comm {
     public static Connection getConnection() throws Exception{
-        FileInputStream fileInputStream=new FileInputStream("C:\\Users\\15654\\Desktop\\springmvc02\\src\\main\\resources\\c3p0.properties");
+        FileInputStream fileInputStream=new FileInputStream("D:\\users\\idea-workspace\\Myworkspace\\springmvc02\\src\\main\\resources\\c3p0.properties");
         Properties properties=new Properties();
         properties.load(fileInputStream);
 
