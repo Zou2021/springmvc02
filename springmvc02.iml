@@ -64,5 +64,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.codehaus.plexus:plexus-utils:1.5.8" level="project" />
     <orderEntry type="library" name="Maven: com.mchange:mchange-commons-java:0.2.20" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.7" level="project" />
   </component>
 </module>

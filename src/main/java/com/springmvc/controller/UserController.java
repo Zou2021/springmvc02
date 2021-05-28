@@ -2,6 +2,7 @@ package com.springmvc.controller;
 
 import com.springmvc.pojo.User;
 import com.springmvc.service.UserServiceImpl;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 /**
- * @author:王娉
+ * @author:邹祥发
  * @date：2021-05-21 21:29
  **/
 @Controller
@@ -55,26 +56,34 @@ public class UserController {
 
         return "getUser.do";
     }
+
     //修改方法（跳转页面）
     @RequestMapping("/edit.do")
-    public ModelAndView up(Integer id)throws Exception{
+    public ModelAndView up(Integer id) throws Exception {
         System.out.println("请求修改方法");
         User user = userServiceImpl.selectUserByIdSer(id);
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user",user);
+        modelAndView.addObject("user", user);
+        System.out.println(user.toString());
         modelAndView.setViewName("edit.jsp");
         return modelAndView;
     }
+
     //修改方法（更新数据）
     @RequestMapping("/editUser.do")
-    public String edit(Integer id,String name,Integer age,String sex)throws Exception{
+    public String edit(@Param("id") Integer id,
+                       @Param("name") String name,
+                       @Param("age") Integer age,
+                       @Param("sex") String sex) throws Exception {
         System.out.println("进入到数据库修改方法");
         User user = new User();
+        user.setId(id);
         user.setName(name);
         user.setAge(age);
         user.setSex(sex);
-        userServiceImpl.updateUserSer(user,id);
+        userServiceImpl.updateMyUserSer(user);
+        System.out.println(user);
 
         return "redirect:getUser.do";
     }
